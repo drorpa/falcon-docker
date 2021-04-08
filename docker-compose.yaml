@@ -1,11 +1,12 @@
 version: "3"
 
 services:
+
   service1:
     build: service1
     restart: always
     ports:
-      - 6060:80
+      - 7000:80
     volumes: 
       - ./service1/mydata:/code/container_data
 
@@ -13,7 +14,7 @@ services:
     build: service2
     restart: always
     ports:
-      - 7070:80
+      - 8000:80
 
 # volumes:
 #   mydata:

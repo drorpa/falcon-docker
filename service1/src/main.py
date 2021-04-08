@@ -1,5 +1,5 @@
 import falcon
-
+import requests
 
 class HelloWorldResource:
 
@@ -9,12 +9,10 @@ class HelloWorldResource:
                           ' Gunicorn running in an Alpine Linux container.' +
                           ' this is SERVICE1')
 
-        p = request.params.get('write')
-        if p is None:
-            p = 'no input'
+        p = requests.get('http://service2')
 
         with open('container_data/myfile.txt', 'a') as txtfile:
-            txtfile.write(p + '\n')
+            txtfile.write(p.text + '\n')
 
 
 app = falcon.API()
